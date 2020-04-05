@@ -2,9 +2,9 @@ import pygame
 import time
 from random import randint
 
-WIDTH = 800
-HEIGHT = 800
-BOX_WIDTH = 200
+WIDTH = 600
+HEIGHT = 600
+BOX_WIDTH = 60
 FPS = 30
 
 # column_size is actually size of x coordinates in 2d coordinate system
@@ -138,7 +138,6 @@ def knockdown_wall(curr, unvisited, is_solution=False):
 def find_neighbours_solution(xc, yc):
     current_neighbours = []
     coord_val_tuple = (xc * BOX_WIDTH, yc * BOX_WIDTH)
-    print(xc, yc)
 
     # if there is no wall on the right, right cell can be  next cell to reach end point.
     if xc + 1 < column_size and (xc + 1, yc) not in unvisited_cells and broken_walls_right[coord_val_tuple]:
@@ -225,7 +224,6 @@ def solve_maze():
         current_cell = solution.pop()
 
         if current_cell[0] == exit_x and current_cell[1] == exit_y:
-            print("end")
             solution.append(current_cell)
             break
         neighbours = find_neighbours_solution(current_cell[0], current_cell[1])
