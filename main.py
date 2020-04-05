@@ -2,7 +2,7 @@
 ==========================================
  Title:  Maze Generation
  Author: Burak Sekili
- Date:   6 April 2020
+ Date:   5 April 2020
 ==========================================
 '''
 
@@ -31,6 +31,7 @@ delay_time = 0.1
 pygame.init()
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Maze Generator")
+clock = pygame.time.Clock()
 
 # visited_cells keeps visited cells as a tuple coordinates.
 # etc. ((0, 0), (0,1))
