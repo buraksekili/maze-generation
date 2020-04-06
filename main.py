@@ -1,10 +1,10 @@
-'''
+"""
 ==========================================
  Title:  Maze Generation
  Author: Burak Sekili
- Date:   5 April 2020
+ Date:   6 April 2020
 ==========================================
-'''
+"""
 
 import pygame
 import time
@@ -223,49 +223,6 @@ def display_solution(solution_list):
     rect = pygame.Rect((exit_x * BOX_WIDTH) + mid_coord, (exit_y * BOX_WIDTH) + mid_coord, dot_size, dot_size)
     pygame.draw.rect(screen, RED, rect)
     pygame.display.update()
-
-
-def solve_maze():
-    solution = [(entry_x, entry_y)]
-    path_stack = [(entry_x, entry_y)]
-    unvisited_cells.append((entry_x, entry_y))
-    while len(path_stack) > 0:
-        current = path_stack.pop()
-        current_cell = solution.pop()
-
-        if current_cell[0] == exit_x and current_cell[1] == exit_y:
-            solution.append(current_cell)
-            break
-        neighbours = find_neighbours_solution(current_cell[0], current_cell[1])
-        if len(neighbours) > 0:
-            path_stack.append(current)
-            solution.append(current_cell)
-
-            rand_idx = randint(0, len(neighbours)) % len(neighbours)
-            unvisited = neighbours[rand_idx]
-
-            unvisited_cells.append((unvisited[0], unvisited[1]))
-
-            path_stack.append(unvisited)
-            solution.append(unvisited)
-    display_solution(solution)
-
-
-if __name__ == '__main__':
-    generate_environment()
-    pygame.display.update()
-
-    generate_maze()
-    pygame.display.update()
-    solve_maze()
-    pygame.display.update()
-
-running = True
-while running:
-    clock.tick(FPS)
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
 
 
 def solve_maze():
